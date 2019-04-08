@@ -17,7 +17,18 @@ export default new Router({
     },
     {
       path: '/',
-      component: resolve => require(['../components/common/Home.vue'], resolve)
+      redirect: '/dashboard'
+    },
+    {
+      path: '/',
+      component: resolve => require(['../components/common/Home.vue'], resolve),
+      meta: { title: '自述文件' },
+      children: [
+        {
+          path: '/table',
+          component: resolve => require(['../components/pages/Basetable.vue'], resolve)
+        }
+      ]
     },
     {
       path: '/sidebar',
